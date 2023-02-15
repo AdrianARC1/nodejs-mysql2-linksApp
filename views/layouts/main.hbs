@@ -19,18 +19,8 @@
 <body>
     {{> navigation}}
 
-    {{#if success}}
-        <div class="container">
-            <div class="row">
-                <div class="alert alert-success alert dismissible fade show">
-                    {{success}}
-                    <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    {{/if}}
+    {{> message}}
+
     {{{ body }}}
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
