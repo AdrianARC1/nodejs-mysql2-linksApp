@@ -24,7 +24,8 @@ router.post('/add', async (req,res)=>{
   await pool.query('INSERT INTO links SET ?', [newLink])
   // res.send('Recibido')
   req.flash('success','Link saved successfully')
-  console.log(req.body)
+  // console.log(req.body)
+  res.redirect('/links')
 })
 
 
