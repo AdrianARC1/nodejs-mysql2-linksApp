@@ -8,14 +8,14 @@ const {engine}= require('express-handlebars')
 const flash =require('connect-flash')
 const session = require('express-session')
 const smysql = require('express-mysql-session')
-
+const passport = require('passport')
 const { database } = require('./keys')
 const indexRouter = require('./routes/index');
 const linksRouter = require('./routes/links');
 const authenticationRouter = require('./routes/authentication');
 
 const app = express();
-
+require('./lib/passport')
 app.set('views', path.join(__dirname, 'views'));
 
 app.engine('.hbs', engine({
@@ -40,6 +40,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(passport.initialize())
+app.use(passport.session())
+
+
 // Global Variables
 app.use((req,res,next)=>{
   app.locals.success=req.flash('success')
@@ -49,7 +53,7 @@ app.use((req,res,next)=>{
 
 app.use('/', indexRouter);
 app.use('/links', linksRouter);
-app.use('/authentication', authenticationRouter);
+app.use('/', authenticationRouter);
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));
