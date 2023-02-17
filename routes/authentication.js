@@ -12,12 +12,12 @@ router.post('/signup', passport.authenticate('local.signup',{
   failureFlash: true
 }))
 
-router.get('/login', (req, res, next) => {  
-  res.render('auth/login')
+router.get('/signin', (req, res, next) => {  
+  res.render('auth/signin')
 });
 
-router.post('/login', (req, res, next) => {  
-  res.render('auth/login')
+router.post('/signin', (req, res, next) => {  
+  res.render('auth/signin')
 });
 
 router.get('/profile', (req, res, next) => {  
